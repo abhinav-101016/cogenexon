@@ -3,55 +3,61 @@ import { motion } from 'framer-motion';
 
 export default function AmbientOrbs() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Primary indigo orb */}
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <motion.div
-        className="orb absolute w-[700px] h-[700px] bg-indigo-600/10"
-        style={{ top: '-20%', left: '20%' }}
+        className="absolute h-[720px] w-[720px] rounded-full bg-indigo-600/10 blur-3xl"
+        style={{ top: '-18%', left: '14%' }}
         animate={{
-          x: [0, 40, -20, 0],
-          y: [0, -30, 20, 0],
-          scale: [1, 1.08, 0.96, 1],
+          x: [0, 40, -18, 0],
+          y: [0, -26, 16, 0],
+          scale: [1, 1.05, 0.96, 1],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
       />
 
-      {/* Cyan orb bottom right */}
       <motion.div
-        className="orb orb-2 absolute w-[500px] h-[500px] bg-cyan-500/7"
-        style={{ bottom: '-10%', right: '-5%' }}
+        className="absolute h-[520px] w-[520px] rounded-full bg-cyan-500/8 blur-3xl"
+        style={{ bottom: '-10%', right: '-4%' }}
         animate={{
-          x: [0, -50, 20, 0],
-          y: [0, 30, -20, 0],
-          scale: [1, 0.92, 1.05, 1],
+          x: [0, -46, 18, 0],
+          y: [0, 28, -18, 0],
+          scale: [1, 0.94, 1.04, 1],
         }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 2.4,
+        }}
       />
 
-      {/* Subtle violet orb center */}
       <motion.div
-        className="orb orb-3 absolute w-[400px] h-[400px] bg-violet-700/8"
-        style={{ top: '30%', left: '50%', transform: 'translateX(-50%)' }}
+        className="absolute left-1/2 top-[28%] h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-violet-700/8 blur-3xl"
         animate={{
-          scale: [1, 1.15, 0.9, 1],
-          opacity: [0.3, 0.6, 0.3],
+          scale: [1, 1.14, 0.92, 1],
+          opacity: [0.28, 0.52, 0.28],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 6 }}
-      />
-
-      {/* Top center glow beam */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-64"
-        style={{
-          background: 'linear-gradient(180deg, rgba(99,102,241,0.5) 0%, transparent 100%)',
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: 'easeInOut',
+          delay: 5.5,
         }}
       />
 
-      {/* Radial hero glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]"
+        className="absolute left-1/2 top-0 h-72 w-px -translate-x-1/2"
         style={{
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12) 0%, transparent 70%)',
+          background:
+            'linear-gradient(180deg, rgba(109,94,248,0.55) 0%, transparent 100%)',
+        }}
+      />
+
+      <div
+        className="absolute left-1/2 top-0 h-[420px] w-[900px] -translate-x-1/2"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 0%, rgba(109,94,248,0.16) 0%, transparent 70%)',
         }}
       />
     </div>
