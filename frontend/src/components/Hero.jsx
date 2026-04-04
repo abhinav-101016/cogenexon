@@ -1,178 +1,157 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import AmbientOrbs from './AmbientOrbs';
 import GridBackground from './GridBackground';
-import FloatingCard from './FloatingCard';
-import AnimatedCounter from './AnimatedCounter';
+import NeuralCore from './NeuralCore';
 
-const SERVICES = [
-  { icon: '⬡', label: 'AI Agents', description: 'Autonomous systems that think and act' },
-  { icon: '◈', label: 'ML Pipelines', description: 'End-to-end model lifecycle management' },
-  { icon: '◎', label: 'LLM Integration', description: 'Language models scaled to production' },
-  { icon: '⊕', label: 'Data Intelligence', description: 'Insights extracted from your data' },
+const floatingTags = [
+  { label: 'AI Agents', x: '8%', y: '18%' },
+  { label: 'SaaS Platforms', x: '68%', y: '14%' },
+  { label: 'Enterprise Systems', x: '74%', y: '66%' },
+  { label: 'Mobile Engineering', x: '10%', y: '72%' },
+  { label: 'Product Strategy', x: '52%', y: '82%' },
 ];
 
-const TECHS = [
-  'OpenAI','Anthropic','LangChain','HuggingFace',
-  'AWS Bedrock','Azure AI','Vertex AI','PyTorch','TensorFlow','Pinecone',
+const stats = [
+  { value: '99.99%', label: 'Reliability' },
+  { value: '450ms', label: 'Latency Floor' },
+  { value: 'AI-Native', label: 'Architecture' },
+  { value: '24/7', label: 'Delivery Support' },
 ];
-
-const STATS = [
-  { value: '150', suffix: '+', label: 'Projects Delivered' },
-  { value: '40', suffix: '+', label: 'Enterprise Clients' },
-  { value: '98', suffix: '%', label: 'Client Retention' },
-  { value: '12', suffix: 'x', label: 'Average ROI' },
-];
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, delay },
-});
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-24 overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden pt-32 md:pt-36">
+      {/* Background layers */}
+      <div className="absolute inset-0">
+        <GridBackground />
+        <AmbientOrbs />
+      </div>
 
-      {/* Light Background */}
-      <div className="absolute inset-0 bg-white" />
+      {/* Soft neural glow */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(109,94,248,0.16),transparent_30%),radial-gradient(circle_at_78%_24%,rgba(122,215,255,0.10),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent)]" />
 
-      {/* Soft Gradient Orbs */}
-      <motion.div
-        animate={{ y: [0, -40, 0], x: [0, 30, 0] }}
-        transition={{ duration: 14, repeat: Infinity }}
-        className="absolute w-[600px] h-[600px] rounded-full"
-        style={{
-          background: 'rgba(99,102,241,0.12)',
-          filter: 'blur(100px)',
-          top: '-15%',
-          left: '10%',
-        }}
-      />
-      <motion.div
-        animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-        transition={{ duration: 12, repeat: Infinity }}
-        className="absolute w-[450px] h-[450px] rounded-full"
-        style={{
-          background: 'rgba(56,189,248,0.10)',
-          filter: 'blur(100px)',
-          bottom: '-10%',
-          right: '5%',
-        }}
-      />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          {/* Left content */}
+          <div className="max-w-3xl">
 
-      <GridBackground />
-
-      {/* Content */}
-      <motion.div
-        initial={{ y: 40 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1 }}
-        className="relative z-10 max-w-[1200px] mx-auto w-full text-center"
-      >
-
-        {/* Badge */}
-        <motion.div {...fadeUp(0.1)}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-10 border border-indigo-200 bg-indigo-50"
-        >
-          <span className="text-xs text-indigo-600 font-medium">
-            GenAI Platform · Early Access
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1 {...fadeUp(0.2)}
-          className="font-extrabold mb-6 leading-tight text-gray-900"
-          style={{ fontSize: 'clamp(52px,7vw,96px)' }}
-        >
-          <motion.span
-            className="block"
-            animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            style={{
-              backgroundImage: 'linear-gradient(90deg,#6366f1,#38bdf8,#a78bfa)',
-              backgroundSize: '300%',
-              WebkitBackgroundClip: 'text',
-              color: 'transparent',
-            }}
-          >
-            Intelligence
-          </motion.span>
-
-          <span className="block">That Transforms</span>
-
-          <span className="block text-gray-500">
-            Your <span className="text-indigo-600">Enterprise</span>
-          </span>
-        </motion.h1>
-
-        {/* Subtext */}
-        <motion.p {...fadeUp(0.3)}
-          className="max-w-[650px] mx-auto text-gray-600 mb-12 text-lg"
-        >
-          Cogenexon builds AI systems that don’t just automate —
-          <span className="text-gray-900 font-semibold"> they think, adapt, and scale</span>.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div {...fadeUp(0.4)} className="flex justify-center gap-4 mb-16 flex-wrap">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-7 py-3.5 rounded-xl text-white font-semibold"
-            style={{
-              background: 'linear-gradient(135deg,#6366f1,#7c6ff7)',
-              boxShadow: '0 10px 25px rgba(99,102,241,0.3)',
-            }}
-          >
-            Start Building
-          </motion.button>
-
-          <button className="px-7 py-3.5 rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-100">
-            View Case Studies
-          </button>
-        </motion.div>
-
-        {/* Services */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-          {SERVICES.map((s) => (
-            <motion.div
-              key={s.label}
-              whileHover={{ y: -8, scale: 1.04 }}
+            <motion.h1
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-4xl text-[2.7rem] font-semibold leading-[0.96] tracking-[-0.04em] text-white sm:text-[3.5rem] md:text-[4.6rem] lg:text-[5.4rem]"
             >
-              <FloatingCard {...s} />
-            </motion.div>
-          ))}
-        </div>
+              Architecting{' '}
+              <span className="bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent">
+                Intelligent Products
+              </span>{' '}
+              for the Next Decade
+            </motion.h1>
 
-        {/* Tech Scroll */}
-        <div className="overflow-hidden mb-16">
-          <div className="flex gap-12 animate-scroll">
-            {[...TECHS, ...TECHS].map((t, i) => (
-              <span key={i} className="text-gray-500 text-sm uppercase tracking-widest">
-                {t}
-              </span>
-            ))}
+            <motion.p
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="mt-6 max-w-2xl text-[15px] leading-7 text-white/66 md:text-[17px] md:leading-8"
+            >
+              Cognexon transforms complex business challenges into scalable SaaS,
+              AI-powered workflows, and enterprise platforms designed for
+              performance, autonomy, and long-term growth.
+            </motion.p>
           </div>
-        </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {STATS.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 + i * 0.1 }}
-            >
-              <div className="text-3xl font-bold text-indigo-600">
-                <AnimatedCounter value={s.value} suffix={s.suffix} />
+          {/* Right visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 18 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className="relative mx-auto flex w-full max-w-[680px] items-center justify-center"
+          >
+            <div className="relative aspect-square w-full max-w-[620px]">
+              {/* Floating tags */}
+              {floatingTags.map((tag, index) => (
+                <motion.div
+                  key={tag.label}
+                  className="absolute z-20 hidden md:block"
+                  style={{ left: tag.x, top: tag.y }}
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    y: [0, -6, 0],
+                  }}
+                  transition={{
+                    opacity: {
+                      duration: 0.45,
+                      delay: 0.45 + index * 0.08,
+                    },
+                    scale: {
+                      duration: 0.45,
+                      delay: 0.45 + index * 0.08,
+                    },
+                    y: {
+                      duration: 4 + index,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    },
+                  }}
+                >
+                  <div className="rounded-full border border-white/10 bg-[#0D121A]/75 px-4 py-2 text-[11px] font-medium tracking-[0.14em] text-white/72 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.22)]">
+                    {tag.label}
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Outer halo */}
+              <motion.div
+                className="absolute inset-[10%] rounded-full border border-indigo-300/10"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 36, repeat: Infinity, ease: 'linear' }}
+              />
+              <motion.div
+                className="absolute inset-[18%] rounded-full border border-cyan-300/10"
+                animate={{ rotate: -360 }}
+                transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* Main neural visual */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <NeuralCore />
               </div>
-              <div className="text-gray-500 text-sm">{s.label}</div>
-            </motion.div>
-          ))}
+
+              {/* Side glows */}
+              <div className="pointer-events-none absolute left-[10%] top-[24%] h-24 w-24 rounded-full bg-indigo-500/20 blur-3xl" />
+              <div className="pointer-events-none absolute right-[14%] top-[38%] h-28 w-28 rounded-full bg-cyan-400/16 blur-3xl" />
+              <div className="pointer-events-none absolute bottom-[18%] left-[30%] h-24 w-24 rounded-full bg-violet-500/16 blur-3xl" />
+            </div>
+          </motion.div>
         </div>
 
-      </motion.div>
+        {/* Bottom scroll cue */}
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="mt-14 flex justify-center pb-10 md:pb-14"
+        >
+          <a
+            href="#solutions"
+            className="group inline-flex flex-col items-center gap-2 text-white/42 transition-colors duration-300 hover:text-white/70"
+          >
+            <span className="text-[10px] uppercase tracking-[0.28em]">
+              Scroll to explore
+            </span>
+            <span className="relative flex h-10 w-6 items-start justify-center rounded-full border border-white/12">
+              <motion.span
+                className="mt-1.5 h-2 w-2 rounded-full bg-white/70"
+                animate={{ y: [0, 12, 0], opacity: [1, 0.35, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </span>
+          </a>
+        </motion.div>
+      </div>
     </section>
   );
 }
