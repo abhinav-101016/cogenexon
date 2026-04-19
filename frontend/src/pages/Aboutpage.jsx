@@ -171,7 +171,7 @@ function HeroSection() {
           <FadeUp delay={0.22}>
             <div className="mt-9 flex flex-wrap gap-4">
               <motion.a
-                href="#contact"
+                 onClick={() => setModalOpen(true)}
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.985 }}
                 className="group relative inline-flex items-center gap-2 rounded-xl border border-indigo-300/20 bg-gradient-to-r from-indigo-500/18 to-cyan-400/14 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_30px_rgba(109,94,248,0.14)] backdrop-blur-xl"

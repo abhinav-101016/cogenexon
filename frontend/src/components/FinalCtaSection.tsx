@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import StrategyCallModal from './StrategyCallModal';
 
 function NeuralHalo() {
   const nodes = [
@@ -101,130 +102,141 @@ function NeuralHalo() {
 }
 
 export default function FinalCtaSection() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
-    <section
-      id="contact"
-      className="relative overflow-hidden py-20 md:py-28"
-    >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-[8%] top-[14%] h-64 w-64 rounded-full bg-indigo-500/8 blur-3xl" />
-        <div className="absolute right-[8%] bottom-[12%] h-64 w-64 rounded-full bg-cyan-400/8 blur-3xl" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      </div>
+    <>
+      <section
+        id="contact"
+        className="relative overflow-hidden py-20 md:py-28"
+      >
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-[8%] top-[14%] h-64 w-64 rounded-full bg-indigo-500/8 blur-3xl" />
+          <div className="absolute right-[8%] bottom-[12%] h-64 w-64 rounded-full bg-cyan-400/8 blur-3xl" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
-        <div className="relative overflow-hidden rounded-[38px] border border-white/10 bg-[#0A0F16]/88 px-6 py-14 backdrop-blur-2xl md:px-10 md:py-20">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(109,94,248,0.16),transparent_26%),radial-gradient(circle_at_74%_64%,rgba(122,215,255,0.10),transparent_28%)]" />
-          <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
+          <div className="relative overflow-hidden rounded-[38px] border border-white/10 bg-[#0A0F16]/88 px-6 py-14 backdrop-blur-2xl md:px-10 md:py-20">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(109,94,248,0.16),transparent_26%),radial-gradient(circle_at_74%_64%,rgba(122,215,255,0.10),transparent_28%)]" />
+            <div className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent" />
 
-          <NeuralHalo />
+            <NeuralHalo />
 
-          <div className="relative z-10 mx-auto max-w-4xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-white/58 backdrop-blur-xl"
-            >
-              <span className="inline-block h-2 w-2 rounded-full bg-indigo-300 shadow-[0_0_14px_rgba(109,94,248,0.7)]" />
-              Ready to Build
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl font-semibold tracking-[-0.05em] text-white md:text-6xl"
-            >
-              Build your next
-              <span className="bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent">
-                {' '}intelligent product
-              </span>
-              {' '}with confidence
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.78, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/62 md:text-[16px] md:leading-8"
-            >
-              From AI-powered workflows to scalable SaaS and enterprise platforms,
-              Cognexon helps ambitious teams turn complex ideas into elegant,
-              production-ready systems designed for performance and growth.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.75, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-            >
-              <motion.a
-                href="mailto:admin@cognexon.in"
-                whileHover={{ y: -2, scale: 1.02 }}
-                whileTap={{ scale: 0.985 }}
-                className="group relative inline-flex items-center justify-center gap-2 rounded-2xl border border-indigo-300/20 bg-gradient-to-r from-indigo-500/22 to-cyan-400/16 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_34px_rgba(109,94,248,0.18)]"
+            <div className="relative z-10 mx-auto max-w-4xl text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-white/58 backdrop-blur-xl"
               >
-                <span className="relative">Book Strategy Call</span>
-                <span className="relative transition-transform duration-300 group-hover:translate-x-1">
-                  →
+                <span className="inline-block h-2 w-2 rounded-full bg-indigo-300 shadow-[0_0_14px_rgba(109,94,248,0.7)]" />
+                Ready to Build
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.8, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="text-3xl font-semibold tracking-[-0.05em] text-white md:text-6xl"
+              >
+                Build your next
+                <span className="bg-gradient-to-r from-white via-cyan-100 to-indigo-200 bg-clip-text text-transparent">
+                  {' '}intelligent product
                 </span>
-              </motion.a>
+                {' '}with confidence
+              </motion.h2>
 
-              <motion.a
-                href="mailto:admin@cognexon.in"
-                whileHover={{ y: -1, scale: 1.015 }}
-                whileTap={{ scale: 0.985 }}
-                className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] px-6 py-3.5 text-sm font-medium text-white/84 backdrop-blur-xl transition-colors duration-300 hover:bg-white/[0.07] hover:text-white"
+              <motion.p
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.78, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/62 md:text-[16px] md:leading-8"
               >
-                Tell Us About Your Project
-              </motion.a>
-            </motion.div>
+                From AI-powered workflows to scalable SaaS and enterprise platforms,
+                Cognexon helps ambitious teams turn complex ideas into elegant,
+                production-ready systems designed for performance and growth.
+              </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.72, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 flex flex-wrap items-center justify-center gap-3"
-            >
-              {[
-                'AI-Native Strategy',
-                'Scalable Engineering',
-                'Enterprise-Ready Delivery',
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/66"
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.75, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+              >
+                {/* Book Strategy Call — opens modal */}
+                <motion.button
+                  onClick={() => setModalOpen(true)}
+                  whileHover={{ y: -2, scale: 1.02 }}
+                  whileTap={{ scale: 0.985 }}
+                  className="group relative inline-flex items-center justify-center gap-2 rounded-2xl border border-indigo-300/20 bg-gradient-to-r from-indigo-500/22 to-cyan-400/16 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_34px_rgba(109,94,248,0.18)]"
                 >
-                  {item}
-                </div>
-              ))}
-            </motion.div>
+                  <span className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_30%_50%,rgba(255,255,255,0.16),transparent_40%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <span className="relative">Book Strategy Call</span>
+                  <motion.span
+                    className="relative"
+                    animate={{ x: [0, 3, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                  >→</motion.span>
+                </motion.button>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.72, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-8 text-sm text-white/52"
-            >
-              Prefer email? Reach us directly at{' '}
-              <a
-                href="mailto:admin@cognexon.in"
-                className="font-medium text-white/82 transition-colors duration-300 hover:text-white"
+                {/* Tell Us — also opens modal */}
+                <motion.button
+                  onClick={() => setModalOpen(true)}
+                  whileHover={{ y: -1, scale: 1.015 }}
+                  whileTap={{ scale: 0.985 }}
+                  className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/[0.05] px-6 py-3.5 text-sm font-medium text-white/84 backdrop-blur-xl transition-colors duration-300 hover:bg-white/[0.07] hover:text-white"
+                >
+                  Tell Us About Your Project
+                </motion.button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.72, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-8 flex flex-wrap items-center justify-center gap-3"
               >
-                admin@cognexon.in
-              </a>
-            </motion.div>
+                {[
+                  'AI-Native Strategy',
+                  'Scalable Engineering',
+                  'Enterprise-Ready Delivery',
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] uppercase tracking-[0.16em] text-white/66"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.72, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-8 text-sm text-white/52"
+              >
+                Prefer email? Reach us directly at{' '}
+                <a
+                  href="mailto:admin@cognexon.in"
+                  className="font-medium text-white/82 transition-colors duration-300 hover:text-white"
+                >
+                  admin@cognexon.in
+                </a>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <StrategyCallModal open={modalOpen} onClose={() => setModalOpen(false)} />
+    </>
   );
 }

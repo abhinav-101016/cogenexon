@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
 // ─── Replace these with your real EmailJS credentials ────────────────────────
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 const PROJECT_TYPES = [
@@ -19,11 +20,11 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGETS = [
-  'Under $10k',
-  '$10k – $25k',
-  '$25k – $75k',
-  '$75k – $150k',
-  '$150k+',
+  'Under Rs:10k',
+  'Rs:10k – Rs:25k',
+  'Rs:25k – Rs:75k',
+  'Rs:75k – Rs:150k',
+  'Rs:150k+',
   'Not sure yet',
 ];
 

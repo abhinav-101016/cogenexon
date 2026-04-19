@@ -6,7 +6,7 @@ import StrategyCallModal from './StrategyCallModal';
 const navItems = [
   { label: 'Solutions', href: '#capabilities' },
   { label: 'Products', href: '#products' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Projects', href: '/projects', isPage: true },
   { label: 'Process', href: '#process' },
   { label: 'About', href: '/about', isPage: true },
 ];
@@ -87,10 +87,16 @@ export default function Header() {
                   >
                     <Link
                       to={item.href}
-                      className="group relative px-4 py-2 text-[14px] font-medium text-white/68 transition-colors duration-300 hover:text-white block"
+                      className={[
+                        'group relative px-4 py-2 text-[14px] font-medium transition-colors duration-300 hover:text-white block',
+                        location.pathname === item.href ? 'text-white' : 'text-white/68',
+                      ].join(' ')}
                     >
                       <span className="relative z-10">{item.label}</span>
-                      <span className="pointer-events-none absolute inset-x-3 bottom-[7px] h-px origin-center scale-x-0 bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent transition-transform duration-300 group-hover:scale-x-100" />
+                      <span className={[
+                        'pointer-events-none absolute inset-x-3 bottom-[7px] h-px origin-center bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent transition-transform duration-300',
+                        location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100',
+                      ].join(' ')} />
                       <span className="pointer-events-none absolute inset-0 rounded-xl bg-white/0 transition-colors duration-300 group-hover:bg-white/[0.04]" />
                     </Link>
                   </motion.div>
@@ -116,6 +122,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <motion.a
                 href="#contact"
+                onClick={() => handleHashLink('#contact')}
                 whileHover={{ y: -1, scale: 1.02 }}
                 whileTap={{ scale: 0.985 }}
                 className="relative inline-flex items-center gap-2 overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-white/82 backdrop-blur-xl transition-colors duration-300 hover:text-white"
@@ -183,7 +190,10 @@ export default function Header() {
                           key={item.label}
                           to={item.href}
                           onClick={() => setMobileOpen(false)}
-                          className="group flex items-center justify-between rounded-xl px-4 py-3 text-[15px] font-medium text-white/78 transition-all duration-300 hover:bg-white/[0.04] hover:text-white"
+                          className={[
+                            'group flex items-center justify-between rounded-xl px-4 py-3 text-[15px] font-medium transition-all duration-300 hover:bg-white/[0.04] hover:text-white',
+                            location.pathname === item.href ? 'text-white bg-white/[0.04]' : 'text-white/78',
+                          ].join(' ')}
                         >
                           <span>{item.label}</span>
                           <span className="text-cyan-300/55 transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -196,7 +206,7 @@ export default function Header() {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -12 }}
                           transition={{ duration: 0.25, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => { setMobileOpen(false); handleHashLink(item.href); }}
                           className="group flex items-center justify-between rounded-xl px-4 py-3 text-[15px] font-medium text-white/78 transition-all duration-300 hover:bg-white/[0.04] hover:text-white"
                         >
                           <span>{item.label}</span>
@@ -206,7 +216,11 @@ export default function Header() {
                     )}
                   </div>
                   <div className="mt-4 grid grid-cols-1 gap-3">
-                    <a href="#contact" onClick={() => setMobileOpen(false)} className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white/88">
+                    <a
+                      href="#contact"
+                      onClick={() => { setMobileOpen(false); handleHashLink('#contact'); }}
+                      className="inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-white/88"
+                    >
                       Start a Project
                     </a>
                     <button

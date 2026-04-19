@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 type Project = {
   title: string;
@@ -10,6 +11,7 @@ type Project = {
   stack: string[];
   description: string;
   metrics: { value: string; label: string }[];
+  slug: string;
 };
 
 const projects: Project[] = [
@@ -26,6 +28,7 @@ const projects: Project[] = [
       { value: '500k+', label: 'Patient Records' },
       { value: '30%', label: 'Efficiency Boost' },
     ],
+    slug: 'mediqliq',
   },
   {
     title: 'Real Estate Mobile App',
@@ -40,6 +43,7 @@ const projects: Project[] = [
       { value: '1M+', label: 'App Downloads' },
       { value: '4.8', label: 'App Store Rating' },
     ],
+    slug: 'proplink',
   },
   {
     title: 'ERP for Sales Management',
@@ -54,6 +58,7 @@ const projects: Project[] = [
       { value: '360°', label: 'Sales Visibility' },
       { value: 'Unified', label: 'Ops Workflow' },
     ],
+    slug: 'tenderpro',
   },
   {
     title: 'ERP for Medicine Factory Management',
@@ -68,6 +73,7 @@ const projects: Project[] = [
       { value: 'End-to-End', label: 'Factory Workflow' },
       { value: 'Centralized', label: 'Operational Control' },
     ],
+    slug: 'gptool',
   },
   {
     title: 'Ecommerce Shopping App',
@@ -82,6 +88,7 @@ const projects: Project[] = [
       { value: 'Fast', label: 'Checkout Flow' },
       { value: 'Omnichannel', label: 'Shopping Experience' },
     ],
+    slug: 'lunemart',
   },
   {
     title: 'Automation APIs',
@@ -96,6 +103,7 @@ const projects: Project[] = [
       { value: 'API-First', label: 'Automation Layer' },
       { value: 'Scalable', label: 'Integration Ready' },
     ],
+    slug: 'newsforge',
   },
 ];
 
@@ -119,76 +127,78 @@ function ProjectCard({
       whileHover={{ y: -6 }}
       className="group relative h-full"
     >
-      <div className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.035] p-6 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.22)] transition-colors duration-300 group-hover:border-white/16">
-        <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_18%_22%,rgba(109,94,248,0.14),transparent_28%),radial-gradient(circle_at_80%_72%,rgba(122,215,255,0.10),transparent_28%)]" />
+      <Link to={`/projects/${project.slug}`} className="block h-full">
+        <div className="relative flex h-full flex-col overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.035] p-6 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.22)] transition-colors duration-300 group-hover:border-white/16">
+          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/18 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_18%_22%,rgba(109,94,248,0.14),transparent_28%),radial-gradient(circle_at_80%_72%,rgba(122,215,255,0.10),transparent_28%)]" />
 
-        <div className="relative z-10 flex items-start justify-between gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-2xl">
-            {project.icon}
-          </div>
-
-          <div className="flex flex-wrap justify-end gap-2">
-            <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-white/52">
-              {project.industry}
+          <div className="relative z-10 flex items-start justify-between gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.06] text-2xl">
+              {project.icon}
             </div>
-            <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-cyan-100/75">
-              {project.type}
+
+            <div className="flex flex-wrap justify-end gap-2">
+              <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-white/52">
+                {project.industry}
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-cyan-100/75">
+                {project.type}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="relative z-10 mt-5">
-          <div className="text-[11px] uppercase tracking-[0.18em] text-white/42">
-            {project.subtitle}
+          <div className="relative z-10 mt-5">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-white/42">
+              {project.subtitle}
+            </div>
+            <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-white">
+              {project.title}
+            </h3>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <div
+                  key={tech}
+                  className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-[11px] uppercase tracking-[0.14em] text-white/68"
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-5 text-sm leading-7 text-white/62">
+              {project.description}
+            </p>
           </div>
-          <h3 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-white">
-            {project.title}
-          </h3>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
+          <div className="relative z-10 mt-6 grid grid-cols-2 gap-3">
+            {project.metrics.map((metric) => (
               <div
-                key={tech}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-2 text-[11px] uppercase tracking-[0.14em] text-white/68"
+                key={metric.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4"
               >
-                {tech}
+                <div className="text-[1.1rem] font-semibold tracking-[-0.03em] text-white">
+                  {metric.value}
+                </div>
+                <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/45">
+                  {metric.label}
+                </div>
               </div>
             ))}
           </div>
 
-          <p className="mt-5 text-sm leading-7 text-white/62">
-            {project.description}
-          </p>
-        </div>
-
-        <div className="relative z-10 mt-6 grid grid-cols-2 gap-3">
-          {project.metrics.map((metric) => (
-            <div
-              key={metric.label}
-              className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4"
-            >
-              <div className="text-[1.1rem] font-semibold tracking-[-0.03em] text-white">
-                {metric.value}
-              </div>
-              <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-white/45">
-                {metric.label}
-              </div>
+          <div className="relative z-10 mt-6">
+            <div className="inline-flex items-center gap-2 text-sm font-medium text-white/82 transition-colors duration-300 group-hover:text-white">
+              View Project
+              <motion.span
+                className="text-cyan-200/70"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+              >→</motion.span>
             </div>
-          ))}
+          </div>
         </div>
-
-        <div className="relative z-10 mt-6">
-          <motion.a
-            href="#contact"
-            whileHover={{ x: 3 }}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/82 transition-colors duration-300 hover:text-white"
-          >
-            View Project
-            <span className="text-cyan-200/70">→</span>
-          </motion.a>
-        </div>
-      </div>
+      </Link>
     </motion.article>
   );
 }
@@ -226,23 +236,22 @@ export default function FeaturedProjects() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/62 md:text-[15px]">
-            Real-world applications of Cognexon’s engineering capability across
+            Real-world applications of Cognexon's engineering capability across
             healthcare, commerce, enterprise systems, automation, and mobile platforms.
           </p>
         </motion.div>
 
         <div className="mt-10 flex justify-center">
-          <motion.a
-            href="#contact"
-            whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.985 }}
-            className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-300/20 bg-gradient-to-r from-indigo-500/20 to-cyan-400/14 px-5 py-3.5 text-sm font-semibold text-white"
-          >
-            <span>View All Case Studies</span>
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </motion.a>
+          <Link to="/projects">
+            <motion.div
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.985 }}
+              className="group inline-flex items-center gap-2 rounded-2xl border border-indigo-300/20 bg-gradient-to-r from-indigo-500/20 to-cyan-400/14 px-5 py-3.5 text-sm font-semibold text-white cursor-pointer"
+            >
+              <span>View All Projects</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </motion.div>
+          </Link>
         </div>
 
         <div className="mt-12 grid gap-5 md:mt-14 md:grid-cols-2 xl:grid-cols-3">

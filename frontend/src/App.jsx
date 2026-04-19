@@ -14,6 +14,8 @@ import FaqSection from './components/FaqSection';
 import FinalCtaSection from './components/FinalCtaSection';
 import Footer from './components/Footer';
 import AboutPage from './pages/AboutPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
+import ProjectsPage from './pages/ProjectsPage';
 
 function HomePage() {
   return (
@@ -41,6 +43,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path='/projects' element={<ProjectsPage/>}/>
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
       </Routes>
     </div>
   );
