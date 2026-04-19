@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import TechEcosystem from './components/TechEcosystem';
@@ -12,11 +13,11 @@ import EngagementModels from './components/EngagementModels';
 import FaqSection from './components/FaqSection';
 import FinalCtaSection from './components/FinalCtaSection';
 import Footer from './components/Footer';
+import AboutPage from './pages/AboutPage';
 
-export default function App() {
+function HomePage() {
   return (
     <div id="top" className="min-h-screen bg-gray-950 overflow-x-hidden">
-      <Header />
       <Hero />
       <TechEcosystem />
       <CoreCapabilities />
@@ -29,6 +30,18 @@ export default function App() {
       <FaqSection />
       <FinalCtaSection />
       <Footer />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <div className="bg-gray-950 overflow-x-hidden">
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
     </div>
   );
 }
