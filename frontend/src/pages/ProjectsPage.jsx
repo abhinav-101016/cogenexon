@@ -25,7 +25,7 @@ const projects = [
     accent: 'indigo',
     duration: '6 months',
     year: '2024',
-    thumbnail: null,
+    thumbnail: '/CentralizedERPOperations.png',
   },
   {
     id: 'proplink',
@@ -61,7 +61,7 @@ const projects = [
     accent: 'cyan',
     duration: '3 months',
     year: '2023',
-    thumbnail: null,
+    thumbnail: '/OrivoHome.png',
   },
   {
     id: 'ietlaa',
@@ -97,7 +97,7 @@ const projects = [
     accent: 'indigo',
     duration: '3 months',
     year: '2023',
-    thumbnail: null,
+    thumbnail: '/NewsForgeNews.png',
   },
   {
     id: 'cabit',
@@ -121,7 +121,7 @@ const projects = [
     accent: 'indigo',
     duration: '3.5 months',
     year: '2022',
-    thumbnail: null,
+    thumbnail: '/esctHome.png',
   },
 ];
 
@@ -258,13 +258,13 @@ function ProjectCard({ project, index, hovered, onHover, onLeave }) {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/16 to-transparent" />
 
           {/* Thumbnail — real image or animated fallback */}
-          <div className="relative h-[200px] overflow-hidden border-b border-white/8 bg-[#0C1118]">
+          <div className="relative aspect-video overflow-hidden border-b border-white/8 bg-[#0C1118]">
             {project.thumbnail ? (
               <>
                 <img
                   src={project.thumbnail}
                   alt={`${project.name} preview`}
-                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0C1118]/55 via-[#0C1118]/10 to-transparent" />
               </>
