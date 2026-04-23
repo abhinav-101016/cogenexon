@@ -13,7 +13,7 @@ import EngagementModels from './components/EngagementModels';
 import FaqSection from './components/FaqSection';
 import FinalCtaSection from './components/FinalCtaSection';
 import Footer from './components/Footer';
-import AboutPage from './pages/AboutPage';
+import AboutPage from './pages/Aboutpage';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ProjectsPage from './pages/ProjectsPage';
 
