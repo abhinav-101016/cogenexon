@@ -6,7 +6,7 @@ import { Link, useParams } from 'react-router-dom';
 const projectScreenshots = {
   lunemart: [
     { src: '/LuneMartHero.png',       label: 'Hero' },
-    { src: '/LuneMartCategories.png', label: 'Categories' },
+    { src: '/LuneMart Categories.png', label: 'Categories' },
     { src: '/LuneMartCTA.png',        label: 'CTA' },
   ],
   mediqliq: [
@@ -20,9 +20,9 @@ const projectScreenshots = {
     { src: null, label: 'Client Portal' },
   ],
   aadyaplus: [
-    { src: null, label: 'Discovery' },
-    { src: null, label: 'Booking' },
-    { src: null, label: 'Prescription' },
+    { src: '/AadyaDoctors.png', label: 'Discovery' },
+    { src: '/AadyaPlusHome.png', label: 'Home' },
+    { src: '/AadyaPlusFindDoctors.png', label: 'Services' },
   ],
   orivotech: [
     { src: '/OrivoHome.png', label: 'Home' },

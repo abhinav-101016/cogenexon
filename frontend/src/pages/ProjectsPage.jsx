@@ -49,7 +49,7 @@ const projects = [
     accent: 'indigo',
     duration: '5 months',
     year: '2024',
-    thumbnail: null,
+    thumbnail: '/AadyaDoctors.png',
   },
   {
     id: 'orivotech',
