@@ -30,14 +30,14 @@ const projects = [
   {
     id: 'proplink',
     eyebrow: 'Real Estate SaaS',
-    name: 'PropLink',
+    name: 'Aadya Builders',
     tagline: 'Cloud-based real estate platform centralizing listings, leads, and client relationship workflows.',
     tags: ['Next.js', 'CRM', 'Google Maps API'],
     category: 'PropTech',
     accent: 'cyan',
     duration: '4 months',
     year: '2024',
-    thumbnail: null,
+    thumbnail: '/AadyaBuildersHome.png',
   },
   {
     id: 'aadyaplus',
@@ -85,7 +85,7 @@ const projects = [
     accent: 'cyan',
     duration: '3.5 months',
     year: '2023',
-    thumbnail: null,
+    thumbnail: '/GPToolsFeatures.png',
   },
   {
     id: 'newsforge',

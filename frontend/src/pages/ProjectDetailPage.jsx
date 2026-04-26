@@ -15,9 +15,9 @@ const projectScreenshots = {
     { src: '/RevenueTrends.png',            label: 'Financial Analytics' },
   ],
   proplink: [
-    { src: null, label: 'Listings' },
-    { src: null, label: 'CRM Pipeline' },
-    { src: null, label: 'Client Portal' },
+    { src: '/AadyaBuildersHome.png',     label: 'Home' },
+    { src: '/AadyaBuildersWhy.png',      label: 'Why Us' },
+    { src: '/AadyaBuildersProjects.png', label: 'Projects' },
   ],
   aadyaplus: [
     { src: '/AadyaDoctors.png', label: 'Discovery' },
@@ -35,9 +35,9 @@ const projectScreenshots = {
     { src: '/AlumniCommittee.png', label: 'Committee' },
   ],
   gptool: [
-    { src: null, label: 'Catalog' },
-    { src: null, label: 'Product Detail' },
-    { src: null, label: 'Spec Sheet' },
+    { src: '/GPToolsMobile.png',   label: 'Mobile View' },
+    { src: '/GPToolsDesktop.png',  label: 'Desktop View' },
+    { src: '/GPToolsFeatures.png', label: 'Features' },
   ],
   newsforge: [
     { src: '/NewsForgeHome.png', label: 'Home Page' },
@@ -101,7 +101,7 @@ const projectData = {
     thoughts: 'Mediqliq transformed hospital operations by replacing fragmented paper workflows with a cohesive digital system. The integrated pharmacy and lab modules reduced prescription errors significantly, while the analytics dashboard gave administrators real-time visibility into hospital performance for the first time.',
   },
   proplink: {
-    eyebrow: 'Real Estate SaaS', name: 'PropLink',
+    eyebrow: 'Real Estate SaaS', name: 'Aadya Builders',
     tagline: 'Cloud-Based Real Estate Management for Agencies and Brokers',
     accent: 'cyan', url: null,
     client: 'Aadya Builders', released: '2024', timeframe: '4 months',
